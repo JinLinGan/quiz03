@@ -1,0 +1,20 @@
+[package]
+name = "quiz03"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "trafic_light"
+path = "src/trafic_light.rs"
+
+[[bin]]
+name = "count_sum"
+path = "src/count_sum.rs"
+
+[[bin]]
+name = "count_area"
+path = "src/count_area.rs"
+
+[dependencies]
