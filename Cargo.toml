@@ -18,3 +18,4 @@ name = "count_area"
 path = "src/count_area.rs"
 
 [dependencies]
+tokio = "1"

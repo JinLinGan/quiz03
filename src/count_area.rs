@@ -1,3 +1,4 @@
+use core::fmt::Debug;
 use std::f32::consts::PI;
 
 #[derive(Debug)]
@@ -15,41 +16,45 @@ struct Triangle {
     high: f32,
 }
 
-trait Area {
+trait Shape {
     fn area(&self) -> f32;
 }
 
-impl Area for Rectangle {
+impl Shape for Rectangle {
     fn area(&self) -> f32 {
         self.width * self.high
     }
 }
 
-impl Area for Circle {
+impl Shape for Circle {
     fn area(&self) -> f32 {
         PI * self.radius * self.radius
     }
 }
 
-impl Area for Triangle {
+impl Shape for Triangle {
     fn area(&self) -> f32 {
         self.base * self.high / 2.0
     }
 }
 
+fn print_area<T>(shape: &T)
+where
+    T: Shape + Debug,
+{
+    println!("Area of {:?} is {}", shape, shape.area());
+}
+
 fn main() {
-    let r = Rectangle {
+    print_area(&Rectangle {
         width: 2.0,
         high: 4.0,
-    };
-    println!("Area of {:?} is {}", r, r.area());
+    });
 
-    let c = Circle { radius: 2.0 };
-    println!("Area of {:?} is {}", c, c.area());
+    print_area(&Circle { radius: 2.0 });
 
-    let t = Triangle {
+    print_area(&Triangle {
         base: 2.0,
         high: 2.0,
-    };
-    println!("Area of {:?} is {}", t, t.area());
+    });
 }
